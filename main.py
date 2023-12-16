@@ -24,10 +24,8 @@ class finiteAutomation:
     match self.estado:      
       #Estado inicial
       case 0:
-        print(self.substring)
         #Consigo ter parte de uma keyword?
         if(self.isKeyWord(self.substring)):
-          print("haha")
           self.estado = 1
         elif(self.isOperator(self.substring)):
           self.estado = 7
@@ -58,15 +56,13 @@ class finiteAutomation:
           self.keepIndex()
 
       case 1:
-        print(self.substring)
         if not self.isKeyWord(self.substring):
-          print(self.substring)
-          
           if(char in self.alphaNum or char == "_"):
             self.estado = 2
           else:
             self.estado = 0
             self.addTable(self.substring[0:len(self.substring)-1], "keyword", self.line)
+            self.substring = ""
             if(char != "\n"):
               self.keepIndex() #Faz com que o caractere permaneça para a próxima análise
         

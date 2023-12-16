@@ -34,3 +34,4 @@ Token;Classificação;Linha
 "20";integer; 1
 ")";delimiter; 1
 "end";keyword; 1
+".";delimiter; 1

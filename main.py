@@ -34,7 +34,7 @@ class finiteAutomation:
           self.estado = 3
         elif char in self.delimiters:
           if(char != ":"):
-            self.addTable(char, "Delimiter", self.line)
+            self.addTable(char, "delimiter", self.line)
             self.substring = ""
           else:
             self.estado = 4
@@ -47,14 +47,22 @@ class finiteAutomation:
         elif char in "+-":
           self.estado = 6
           self.keepIndex()
-      
+        elif char in "*/":
+          self.estado = 8
+          self.keepIndex()
+        elif char in "<>":
+          self.estado = 9
+        elif char in self.relacionalOpe:
+          self.estado = 10
+          self.keepIndex()
+
       case 1:
         if not self.isKeyWord(self.substring):
           if(char in self.alphaNum or char == "_"):
             self.estado = 2
           else:
             self.estado = 0
-            self.addTable(self.substring[0:len(self.substring)-1], "Palavra reservada", self.line)
+            self.addTable(self.substring[0:len(self.substring)-1], "keyword", self.line)
             if(char != "\n"):
               self.keepIndex() #Faz com que o caractere permaneça para a próxima análise
             self.substring = ""
@@ -62,7 +70,7 @@ class finiteAutomation:
       case 2:
         if char not in self.alphaNum and char != "_":
           self.estado = 0
-          self.addTable(self.substring[0:len(self.substring)-1], "identificador", self.line)
+          self.addTable(self.substring[0:len(self.substring)-1], "identifier", self.line)
           self.substring = ""
           if(char != "\n"):
             self.keepIndex()
@@ -76,9 +84,9 @@ class finiteAutomation:
       
       case 4:
         if char == "=":
-          self.addTable(":=", "Atribuição", self.line)
+          self.addTable(":=", "assignment", self.line)
         else:
-          self.addTable(":", "Delimitador", self.line)
+          self.addTable(":", "delimiter", self.line)
           if(char != "\n"):
             self.keepIndex()
         self.estado = 0
@@ -91,12 +99,12 @@ class finiteAutomation:
           if("." in self.substring):
             self.addTable(self.substring[0:len(self.substring)-1], "real", self.line)
           else: 
-            self.addTable(self.substring[0:len(self.substring)-1], "int", self.line)
+            self.addTable(self.substring[0:len(self.substring)-1], "integer", self.line)
           if(char != "\n"):
             self.keepIndex()
       
       case 6:
-        self.addTable(char, "Additive operator", self.line)
+        self.addTable(char, "additive operator", self.line)
         self.estado = 0
         self.substring = ""
       
@@ -107,10 +115,26 @@ class finiteAutomation:
           else:
             self.estado = 0
             if("or" in self.substring):
-              self.addTable(self.substring[0:len(self.substring)-1], "Additive operator", self.line)
+              self.addTable(self.substring[0:len(self.substring)-1], "additive operator", self.line)
             else:
               self.addTable(self.substring[0:len(self.substring)-1], "multiplicative operator", self.line)
             self.substring = ""
+
+      case 8:
+        self.addTable(char, "multiplicative operator", self.line)
+        self.estado = 0
+        self.substring = ""
+
+      case 9:
+        if(char == ">"):
+          self.addTable(self.substring, "relational operator", self.line)
+        elif(char == "="):
+          self.addTable(self.substring, "relational operator", self.line)
+        elif self.substring[0] in self.relacionalOpe and char in self.alphaNum:
+          self.addTable(self.substring[0], "relational operator", self.line)
+          self.keepIndex()
+        self.substring = ""
+        self.estado = 0
 
     if(char == "\n"):
       self.line += 1

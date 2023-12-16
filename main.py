@@ -21,12 +21,13 @@ class finiteAutomation:
 
     self.substring += char
     #Contador de linhas
-
     match self.estado:      
       #Estado inicial
       case 0:
+        print(self.substring)
         #Consigo ter parte de uma keyword?
         if(self.isKeyWord(self.substring)):
+          print("haha")
           self.estado = 1
         elif(self.isOperator(self.substring)):
           self.estado = 7
@@ -57,7 +58,10 @@ class finiteAutomation:
           self.keepIndex()
 
       case 1:
+        print(self.substring)
         if not self.isKeyWord(self.substring):
+          print(self.substring)
+          
           if(char in self.alphaNum or char == "_"):
             self.estado = 2
           else:
@@ -65,7 +69,6 @@ class finiteAutomation:
             self.addTable(self.substring[0:len(self.substring)-1], "keyword", self.line)
             if(char != "\n"):
               self.keepIndex() #Faz com que o caractere permaneça para a próxima análise
-            self.substring = ""
         
       case 2:
         if char not in self.alphaNum and char != "_":
@@ -135,6 +138,11 @@ class finiteAutomation:
           self.keepIndex()
         self.substring = ""
         self.estado = 0
+      
+      case 10:
+        self.addTable(char, "relational operator", self.line)
+        self.substring = ""
+        self.estado = 0
 
     if(char == "\n"):
       self.line += 1
@@ -142,6 +150,7 @@ class finiteAutomation:
   def programInput(self, program):    
     while(self.index < len(program)):
       self.transition(program[self.index])
+      #print(program[self.index] + "\n")
       self.index += 1
 
   def isKeyWord(self, word):
@@ -174,9 +183,7 @@ programFile = open("main.txt", "r")
 
 #Criando string única com todo o programa
 linhas = programFile.readlines()
-linhaStr = "".join(linhas)
-
-print(linhaStr)
+linhaStr = "".join(linhas) + "\n"
 
 #Instanciando um objeto
 lexical = finiteAutomation()

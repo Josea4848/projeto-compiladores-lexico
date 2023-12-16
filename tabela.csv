@@ -1,0 +1,31 @@
+Token;Classificação;Linha
+"program";Palavra reservada; 1
+"teste";identificador; 1
+";";Delimiter; 1
+"var";Palavra reservada; 2
+"valor1";identificador; 3
+":";Delimitador; 3
+"inTeger";identificador; 3
+";";Delimiter; 3
+"gram";identificador; 4
+":";Delimitador; 4
+"real";Palavra reservada; 4
+";";Delimiter; 4
+"begin";Palavra reservada; 5
+"valor1";identificador; 6
+":=";Atribuição; 6
+"10.5";real; 6
+"+";Additive operator; 6
+"7";int; 6
+";";Delimiter; 6
+"z";identificador; 7
+":=";Atribuição; 7
+"53";int; 7
+";";Delimiter; 7
+"if";Palavra reservada; 8
+"(";Delimiter; 8
+"z";identificador; 8
+"20";int; 8
+")";Delimiter; 8
+"end";Palavra reservada; 9
+".";Delimiter; 9

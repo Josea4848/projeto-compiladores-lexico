@@ -1,0 +1,30 @@
+Token;Classificação;Linha
+"program";keyword; 1
+"teste";identifier; 1
+";";delimiter; 1
+"{programa programa teste}";comment; 1
+"var";keyword; 2
+"valor1";identifier; 3
+":";delimiter; 3
+"integer";keyword; 3
+";";delimiter; 3
+"valor2";identifier; 4
+":";delimiter; 4
+"real";keyword; 4
+";";delimiter; 4
+"var4";identifier; 5
+":";delimiter; 5
+"integer";keyword; 5
+";";delimiter; 5
+"begin";keyword; 6
+"valor1";identifier; 7
+":=";assignment; 7
+"10";integer; 7
+";";delimiter; 7
+"if";keyword; 9
+"10";integer; 9
+"<=";relational_operator; 9
+"26";integer; 9
+":";delimiter; 9
+"end";keyword; 10
+".";delimiter; 10

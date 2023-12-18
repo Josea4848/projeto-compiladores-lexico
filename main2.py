@@ -8,7 +8,7 @@ class Lexical:
       ('keyword',r'\b(var|program|real|integer|var|boolean|procedure|begin|end|if|then|else|while|do|not)\b'), #KEYWORD: VAR 
       ('multiplicative_operator', r'\b(\*|/|and)\b'),
       ('additive_operators', r'\b(\+|-|or)\b'),  # OPERADORES ADITIVOS
-      ('identifier', r'\b[a-zA-z|_]\w*\b'),
+      ('identifier', r'\b[a-zA-z]\w*\b'),
       ('WHITESPACE', r'\s+'), # Identificacao do espaco em branco
       ('assignment',r':='),
       ('relational_operator', r'<(=|>)?|>=?|='),

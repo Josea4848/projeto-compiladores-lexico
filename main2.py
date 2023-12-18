@@ -3,7 +3,7 @@ import re
 class Lexical:
     def __init__(self):
       self.patterns = [
-      ('real', r'\b\d+\.\d+\b'), #REAIS
+      ('real', r'\b\d+\.\d*\b'), #REAIS
       ('integer', r'\b\d+\b'),  #KEYWORD: INTEIROS
       ('keyword',r'\b(var|program|real|integer|var|boolean|procedure|begin|end|if|then|else|while|do|not)\b'), #KEYWORD: VAR 
       ('multiplicative_operator', r'\b(\*|/|and)\b'),

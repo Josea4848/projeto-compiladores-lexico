@@ -2,36 +2,36 @@ Token;Classificação;Linha
 "program";keyword; 1
 "teste";identifier; 1
 ";";delimiter; 1
-"var";keyword; 1
-"valor1";identifier; 1
-":";delimiter; 1
-"integer";keyword; 1
-";";delimiter; 1
-"gram";identifier; 1
-":";delimiter; 1
-"real";keyword; 1
-";";delimiter; 1
-"begin";keyword; 1
-"valor1";identifier; 1
-":=";assignment; 1
-"-";additive operator; 1
-"10";integer; 1
-";";delimiter; 1
-"z";identifier; 1
-":=";assignment; 1
-"53";integer; 1
-";";delimiter; 1
-"if";keyword; 1
-"(";delimiter; 1
-"z";identifier; 1
-"<=";relational operator; 1
-"20";integer; 1
-")";delimiter; 1
-"if";keyword; 1
-"(";delimiter; 1
-"z";identifier; 1
-"=";relational operator; 1
-"20";integer; 1
-")";delimiter; 1
-"end";keyword; 1
-".";delimiter; 1
+"var";keyword; 2
+"valor1";identifier; 3
+":";delimiter; 3
+"integer";keyword; 3
+";";delimiter; 3
+"valor2";identifier; 4
+":";delimiter; 4
+"real";keyword; 4
+";";delimiter; 4
+"var4";identifier; 5
+":";delimiter; 5
+"integer";keyword; 5
+";";delimiter; 5
+"orr";identifier; 6
+":";delimiter; 6
+"real";keyword; 6
+";";delimiter; 6
+"begin";keyword; 7
+"valor1";identifier; 8
+":=";assignment; 8
+"";integer; 8
+";";delimiter; 8
+"if";keyword; 10
+"";integer; 10
+"<=";relational operator; 10
+"";integer; 10
+"or";additive operator; 10
+"";integer; 10
+"<>";relational operator; 10
+"";integer; 10
+":";delimiter; 10
+"end";keyword; 11
+".";delimiter; 11

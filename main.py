@@ -31,6 +31,8 @@ class finiteAutomation:
           self.estado = 7
         elif char == "{":
           self.estado = 3
+        elif char == "}" and not self.error:
+          self.error = True
         elif char in self.delimiters:
           if(char != ":"):
             self.addTable(char, "delimiter", self.line)
@@ -95,6 +97,7 @@ class finiteAutomation:
         #Erro
         if char != "." and char not in self.alphaNum[52:]:
           self.estado = 0
+          self.substring = ""
           if("." in self.substring):
             self.addTable(self.substring[0:len(self.substring)-1], "real", self.line)
           else: 
@@ -185,3 +188,6 @@ linhaStr = "".join(linhas) + "\n"
 lexical = finiteAutomation()
 lexical.programInput(linhaStr)
 lexical.showTable()
+
+if(lexical.error):
+  print("Erro de comentário")
